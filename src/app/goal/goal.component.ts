@@ -15,6 +15,7 @@ export class GoalComponent implements OnInit {
   alertService:AlertService;
   quote:Quote;
   
+  
   addNewGoal(goal){
     let goalLength = this.goals.length ;
     goal.id = goalLength+1;
@@ -52,9 +53,11 @@ export class GoalComponent implements OnInit {
       quote:string;
     }
     this.http.get<ApiResponse>("http://quotes.stormconsultancy.co.uk/random.json").subscribe(data=>{
-    
-    //Successful Api request
-    this.quote = new Quote(data.author,data.quote)
+      ///Successful API request
+      this.quote = new Quote(data.author,data.quote)
+    },err=>{
+      this.quote = new Quote ("Winston Churchill","Never never give up!")
+      console.log("An error occurred")
     })
 
   }
