@@ -54,7 +54,7 @@ export class GoalComponent implements OnInit {
     }
   }
   constructor(goalService:GoalService,alertService:AlertService,private quoteService:QuoteRequestService,private router:Router) { 
-    this.goals = goalService.getGoal()
+    this.goals = goalService.getGoals()
     this.alertService = alertService;
   }
 

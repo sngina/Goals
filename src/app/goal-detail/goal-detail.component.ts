@@ -10,6 +10,8 @@ export class GoalDetailComponent implements OnInit {
  
   @Input() goal!: Goal;
   @Output() isComplete = new EventEmitter<boolean>();
+  service: any;
+  route: any;
   goalComplete(complete:boolean) {
     this.isComplete.emit(complete);
   }
@@ -20,6 +22,8 @@ export class GoalDetailComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    let id = this.route.snapshot.paramMap.get('id');
+    this.goal = this.service.getGoal(id)
   }
 
 }
